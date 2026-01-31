@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Platonic Valentine 💖</title>
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #ffeaf4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", "Poppins", cursive;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #ff69b4;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 30px;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background: #ff69b4;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #noBtn {
+      background: #ffd1e8;
+      color: #ff4f9a;
+      left: 50%;
+      top: 60px;
+      transform: translateX(-50%);
+    }
+
+    .small-text {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #ff8fc7;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ff4f9a;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5f2b6a16e4.mp3?filename=romantic-ambient-112191.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h1>💖 Shine, will you be my platonic valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No 🫣</button>
+    </div>
+
+    <div class="message" id="finalMessage">
+      🎉💖 YAYYYY 💖🎉 <br><br>
+      I promise, I won’t disappoint you 🌸🫶✨
+    </div>
+
+    <div class="small-text">
+      💗 no is a bit shy 💗
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("finalMessage");
+
+    let yesScale = 1;
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+      yesScale += 0.2;
+      yesBtn.style.transform = `translateX(-50%) scale(${yesScale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+
+      confetti({
+        particleCount: 200,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#ff69b4', '#ffc0cb', '#ffb6c1']
+      });
+    });
+  </script>
+
+</body>
+</html>
